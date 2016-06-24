@@ -1,0 +1,2 @@
+﻿* Only CommandLineMode is supported
+* Only DefaultDirProvider (commandline on windows) is supported
