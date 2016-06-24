@@ -146,7 +146,7 @@ namespace Nxt.NET
             try
             {
                 AppDomain.CurrentDomain.ProcessExit += Shutdown;
-                Init();
+                Init.Initialize();
             }
             catch (Exception e)
             {
@@ -155,13 +155,113 @@ namespace Nxt.NET
             }
         }
 
-        private static void Init()
-        {
-            throw new NotImplementedException();
-        }
-
         private static void Shutdown(object sender, EventArgs e)
         {
+        }
+
+        private static class Init
+        {
+            private static volatile bool initialized = false;
+
+            static Init()
+            {
+                try
+                {
+                    var startTime = DateTime.Now;
+
+                    Logger.Init();
+                    //Logger.init();
+                    //setSystemProperties();
+                    //logSystemProperties();
+                    //runtimeMode.init();
+                    //Thread secureRandomInitThread = initSecureRandom();
+                    //setServerStatus(ServerStatus.BEFORE_DATABASE, null);
+                    //Db.init();
+                    //setServerStatus(ServerStatus.AFTER_DATABASE, null);
+                    //TransactionProcessorImpl.getInstance();
+                    //BlockchainProcessorImpl.getInstance();
+                    //Account.init();
+                    //AccountRestrictions.init();
+                    //AccountLedger.init();
+                    //Alias.init();
+                    //Asset.init();
+                    //DigitalGoodsStore.init();
+                    //Hub.init();
+                    //Order.init();
+                    //Poll.init();
+                    //PhasingPoll.init();
+                    //Trade.init();
+                    //AssetTransfer.init();
+                    //AssetDelete.init();
+                    //AssetDividend.init();
+                    //Vote.init();
+                    //PhasingVote.init();
+                    //Currency.init();
+                    //CurrencyBuyOffer.init();
+                    //CurrencySellOffer.init();
+                    //CurrencyFounder.init();
+                    //CurrencyMint.init();
+                    //CurrencyTransfer.init();
+                    //Exchange.init();
+                    //ExchangeRequest.init();
+                    //Shuffling.init();
+                    //ShufflingParticipant.init();
+                    //PrunableMessage.init();
+                    //TaggedData.init();
+                    //FxtDistribution.init();
+                    //Peers.init();
+                    //Generator.init();
+                    //AddOns.init();
+                    //API.init();
+                    //Users.init();
+                    //DebugTrace.init();
+                    //int timeMultiplier = (Constants.isTestnet && Constants.isOffline) ? Math.max(Nxt.getIntProperty("nxt.timeMultiplier"), 1) : 1;
+                    //ThreadPool.start(timeMultiplier);
+                    //if (timeMultiplier > 1)
+                    //{
+                    //    setTime(new Time.FasterTime(Math.max(getEpochTime(), Nxt.getBlockchain().getLastBlock().getTimestamp()), timeMultiplier));
+                    //    Logger.logMessage("TIME WILL FLOW " + timeMultiplier + " TIMES FASTER!");
+                    //}
+                    //try
+                    //{
+                    //    secureRandomInitThread.join(10000);
+                    //}
+                    //catch (InterruptedException ignore) { }
+                    //testSecureRandom();
+                    //long currentTime = System.currentTimeMillis();
+                    //Logger.logMessage("Initialization took " + (currentTime - startTime) / 1000 + " seconds");
+                    //Logger.logMessage("Nxt server " + VERSION + " started successfully.");
+                    //Logger.logMessage("Copyright © 2013-2016 The Nxt Core Developers.");
+                    //Logger.logMessage("Distributed under GPLv2, with ABSOLUTELY NO WARRANTY.");
+                    //if (API.getWelcomePageUri() != null)
+                    //{
+                    //    Logger.logMessage("Client UI is at " + API.getWelcomePageUri());
+                    //}
+                    //setServerStatus(ServerStatus.STARTED, API.getWelcomePageUri());
+                    //if (isDesktopApplicationEnabled())
+                    //{
+                    //    launchDesktopApplication();
+                    //}
+                    //if (Constants.isTestnet)
+                    //{
+                    //    Logger.logMessage("RUNNING ON TESTNET - DO NOT USE REAL ACCOUNTS!");
+                    //}
+                }
+                catch (Exception)
+                {
+                    //Logger.logErrorMessage(e.getMessage(), e);
+                    //System.exit(1);
+                }
+            }
+            
+            public static void Initialize()
+            {
+                if (initialized)
+                {
+                    throw new ApplicationException("Nxt.init has already been called");
+                }
+                initialized = true;
+            }
         }
     }
 }
